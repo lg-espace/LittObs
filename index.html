@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LittObs — Système de Profil Océanographique Mobile</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-text">LittObs</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#contexte">Contexte</a></li>
+        <li><a href="#systeme">Le Système</a></li>
+        <li><a href="#innovation">Innovation</a></li>
+        <li><a href="#technique">Technique</a></li>
+        <li><a href="#acteurs">Acteurs</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="hero-waves">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,160 C360,80 720,240 1080,160 C1260,120 1380,200 1440,180 L1440,320 L0,320 Z" fill="rgba(255,255,255,0.04)"/>
+          <path d="M0,200 C300,120 600,260 900,180 C1100,130 1300,220 1440,200 L1440,320 L0,320 Z" fill="rgba(255,255,255,0.04)"/>
+        </svg>
+      </div>
+      <div class="depth-lines">
+        <div class="depth-line" style="--d:0.0s;--x:15%"></div>
+        <div class="depth-line" style="--d:0.4s;--x:30%"></div>
+        <div class="depth-line" style="--d:0.8s;--x:55%"></div>
+        <div class="depth-line" style="--d:1.2s;--x:72%"></div>
+        <div class="depth-line" style="--d:0.6s;--x:88%"></div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag">Programme LittObs · Astrolabe Expeditions</div>
+      <h1>Mesurer l'océan<br /><em>en profondeur</em></h1>
+      <p class="hero-sub">Un capteur océanographique mobile, open-source et low-cost, capable de parcourir toute la colonne d'eau le long d'un mouillage littoral.</p>
+      <div class="hero-actions">
+        <a href="#systeme" class="btn-primary">Découvrir le système</a>
+        <a href="#technique" class="btn-ghost">Spécifications →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-val">6<span class="stat-unit">mois</span></span><span class="stat-label">d'autonomie</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><span class="stat-val">3<span class="stat-unit">param.</span></span><span class="stat-label">T° · Salinité · Pression</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat"><span class="stat-val">&lt;200<span class="stat-unit">€</span></span><span class="stat-label">coût cible</span></div>
+      </div>
+    </div>
+    <div class="hero-probe-anim">
+      <div class="probe-rope"></div>
+      <div class="probe-capsule" id="probe-capsule">
+        <div class="probe-inner"></div>
+      </div>
+      <div class="probe-anchor"></div>
+    </div>
+  </section>
+
+  <!-- CONTEXTE -->
+  <section id="contexte" class="section section-light">
+    <div class="container">
+      <div class="section-label">01 — Contexte</div>
+      <h2>Des zones littorales sous pression</h2>
+      <div class="contexte-grid">
+        <div class="contexte-text">
+          <p>Les zones côtières jouent un rôle capital dans la régulation de notre climat. Elles concentrent les échanges entre eaux douces et marines, influençant directement la salinité des océans et les courants qui structurent notre système climatique mondial.</p>
+          <p>Ces écosystèmes d'une richesse biologique exceptionnelle sont aujourd'hui soumis à une pression croissante : activités anthropiques, surexploitation des ressources, changement climatique. Comprendre leur évolution requiert un réseau d'observation continu, précis et déployable à grande échelle.</p>
+          <p>C'est dans cette optique qu'Astrolabe Expeditions a conçu LittObs : un programme de recherche participative permettant à des citoyens, marins et scientifiques de co-construire des instruments océanographiques ouverts, abordables et réplicables partout dans le monde.</p>
+        </div>
+        <div class="contexte-cards">
+          <div class="ctx-card">
+            <div class="ctx-icon">🌊</div>
+            <h4>Mélange des eaux</h4>
+            <p>Étude de l'interface entre eaux douces et marines, déterminante pour les courants océaniques.</p>
+          </div>
+          <div class="ctx-card">
+            <div class="ctx-icon">🌿</div>
+            <h4>Biodiversité littorale</h4>
+            <p>Écosystèmes parmi les plus riches de la planète, au cœur des enjeux de conservation marine.</p>
+          </div>
+          <div class="ctx-card">
+            <div class="ctx-icon">📡</div>
+            <h4>Observation participative</h4>
+            <p>Des outils open-source co-développés avec la société civile, les FabLabs et les instituts scientifiques.</p>
+          </div>
+          <div class="ctx-card">
+            <div class="ctx-icon">🗺️</div>
+            <h4>Déploiement mondial</h4>
+            <p>Prototypé en rade de Brest, LittObs se déploie sur toutes les façades littorales d'intérêt scientifique.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYSTEME -->
+  <section id="systeme" class="section section-dark">
+    <div class="container">
+      <div class="section-label">02 — Le Système</div>
+      <h2>Du mouillage statique<br/>au profil dynamique</h2>
+
+      <div class="compare-block">
+        <div class="compare-card compare-old">
+          <div class="compare-badge">Ancienne version</div>
+          <h3>Capteur fixe</h3>
+          <p>Le système initial reposait sur un ou plusieurs capteurs immobiles, fixés à différentes profondeurs sur le filin de mouillage. Pour obtenir un profil complet de la colonne d'eau, il fallait multiplier les instruments — jusqu'à 30 sondes pour un mouillage de 300 mètres avec une mesure tous les 10 mètres.</p>
+          <ul class="compare-list">
+            <li class="neg">Coût élevé (multiplication des instruments)</li>
+            <li class="neg">Mesures ponctuelles, non continues</li>
+            <li class="neg">Maintenance complexe</li>
+          </ul>
+        </div>
+        <div class="compare-arrow">→</div>
+        <div class="compare-card compare-new">
+          <div class="compare-badge compare-badge-new">Nouveau système</div>
+          <h3>Capteur mobile</h3>
+          <p>Le nouveau système intègre un mécanisme motorisé permettant à une unique sonde de se déplacer de façon autonome le long du filin de mouillage. Un seul instrument suffit désormais pour couvrir l'intégralité de la colonne d'eau, en effectuant des allers-retours à vitesse contrôlée.</p>
+          <ul class="compare-list">
+            <li class="pos">Un seul capteur pour toute la colonne d'eau</li>
+            <li class="pos">Profils continus et précis</li>
+            <li class="pos">Coût réduit, maintenance simplifiée</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="system-visual">
+        <div class="sysvis-left">
+          <img src="schema_synthetique.png" alt="Schéma synthétique du système LittObs" />
+          <span class="img-caption">Vue d'ensemble du mouillage LittObs</span>
+        </div>
+        <div class="sysvis-right">
+          <div class="sysvis-item">
+            <div class="sysvis-num">1</div>
+            <div>
+              <h4>Surface maîtrisée</h4>
+              <p>Le mouillage ne dépasse pas la surface pour éviter les courants et la gêne des navires. La bouée flotte en subsurface à −5 m minimum.</p>
+            </div>
+          </div>
+          <div class="sysvis-item">
+            <div class="sysvis-num">2</div>
+            <div>
+              <h4>LAMOS — Système de largage</h4>
+              <p>Dispositif de largage temporel (ou acoustique) qui libère la bouée à une date et heure programmée, permettant la récupération depuis la surface.</p>
+            </div>
+          </div>
+          <div class="sysvis-item">
+            <div class="sysvis-num">3</div>
+            <div>
+              <h4>Sonde mobile OSO-CTD</h4>
+              <p>Le capteur se déplace le long du filin grâce à un mécanisme motorisé embarqué, réalisant des profils de mesure sur toute la colonne d'eau.</p>
+            </div>
+          </div>
+          <div class="sysvis-item">
+            <div class="sysvis-num">4</div>
+            <div>
+              <h4>Ancre et lest</h4>
+              <p>Une ancre de 12 kg et un lest de 10 kg maintiennent le mouillage. Le système est utilisable entre 0 et 30 m de profondeur.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INNOVATION -->
+  <section id="innovation" class="section section-light">
+    <div class="container">
+      <div class="section-label">03 — Innovation</div>
+      <h2>Ce qui rend le système unique</h2>
+      <div class="innovation-grid">
+        <div class="innov-feature innov-large">
+          <img src="prototype_du_systeme.jpeg" alt="Prototype du système LittObs" />
+          <div class="innov-overlay">
+            <h3>Mécanisme de déplacement motorisé</h3>
+            <p>Le cœur du nouveau système : un mécanisme embarqué permettant à la sonde de progresser de façon autonome le long du câble de mouillage, à vitesse contrôlée.</p>
+          </div>
+        </div>
+        <div class="innov-col">
+          <div class="innov-feature innov-small">
+            <img src="capteurs.png" alt="Capteurs OSO-CTD" />
+            <div class="innov-overlay innov-overlay-sm">
+              <h3>Capteurs OSO-CTD</h3>
+              <p>Température, salinité et pression. Jusqu'à 6 mois d'autonomie sur batteries 18650. Enregistrement carte SD.</p>
+            </div>
+          </div>
+          <div class="innov-feature innov-small">
+            <img src="impression 3D.jpeg" alt="Impression 3D des composants" />
+            <div class="innov-overlay innov-overlay-sm">
+              <h3>Fabrication additive</h3>
+              <p>Les pièces structurelles sont conçues en CAO et fabriquées par impression 3D, accessibles en FabLab.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNIQUE -->
+  <section id="technique" class="section section-mid">
+    <div class="container">
+      <div class="section-label">04 — Spécifications Techniques</div>
+      <h2>Conçu pour durer.<br/>Conçu pour l'open-source.</h2>
+
+      <div class="tech-top">
+        <div class="tech-img-wrap">
+          <img src="exemple_de_pieces_en_CAO.png" alt="Pièces CAO" />
+          <span class="img-caption">Modélisation 3D des composants mécaniques</span>
+        </div>
+        <div class="tech-specs">
+          <div class="spec-group">
+            <h4>Mesures</h4>
+            <div class="spec-row"><span>Paramètres</span><strong>Température · Salinité · Pression</strong></div>
+            <div class="spec-row"><span>Mode</span><strong>Profil continu (aller-retour)</strong></div>
+            <div class="spec-row"><span>Enregistrement</span><strong>Carte SD embarquée</strong></div>
+          </div>
+          <div class="spec-group">
+            <h4>Déploiement</h4>
+            <div class="spec-row"><span>Profondeur</span><strong>0 – 30 m</strong></div>
+            <div class="spec-row"><span>Autonomie</span><strong>~6 mois (batterie 18650)</strong></div>
+            <div class="spec-row"><span>Largage</span><strong>Temporel (→ acoustique)</strong></div>
+          </div>
+          <div class="spec-group">
+            <h4>Largage Acoustique (LAMOS)</h4>
+            <div class="spec-row"><span>Portée cible</span><strong>50 – 60 m</strong></div>
+            <div class="spec-row"><span>Profondeur récepteur</span><strong>10 – 15 m</strong></div>
+            <div class="spec-row"><span>Délai de largage</span><strong>&lt; 15 minutes</strong></div>
+          </div>
+          <div class="spec-group">
+            <h4>Philosophie</h4>
+            <div class="spec-row"><span>Licence</span><strong>Open-source</strong></div>
+            <div class="spec-row"><span>Fabrication</span><strong>FabLab / impression 3D</strong></div>
+            <div class="spec-row"><span>Coût cible</span><strong>&lt; 200 € (max 400 €)</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="challenges">
+        <h3>Défis d'ingénierie relevés</h3>
+        <div class="challenges-grid">
+          <div class="challenge-card">
+            <div class="ch-icon">🧂</div>
+            <h4>Milieu marin agressif</h4>
+            <p>Résistance à la corrosion saline, aux UV et à la pression. Choix rigoureux des matériaux et traitements de surface adaptés.</p>
+          </div>
+          <div class="challenge-card">
+            <div class="ch-icon">🦠</div>
+            <h4>Biofouling</h4>
+            <p>Minimisation de l'encrassement biologique pour maintenir les performances de mesure sur toute la durée du déploiement.</p>
+          </div>
+          <div class="challenge-card">
+            <div class="ch-icon">⚙️</div>
+            <h4>Mécanisme sous-marin</h4>
+            <p>Conception d'un système de motorisation fiable, étanche et autonome capable de fonctionner 6 mois sans intervention.</p>
+          </div>
+          <div class="challenge-card">
+            <div class="ch-icon">🔋</div>
+            <h4>Autonomie énergétique</h4>
+            <p>Optimisation de la consommation pour atteindre 6 mois d'immersion continue sur batteries 18650 standard.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTEURS -->
+  <section id="acteurs" class="section section-dark">
+    <div class="container">
+      <div class="section-label">05 — Écosystème</div>
+      <h2>Un programme collectif</h2>
+      <p class="section-intro">LittObs est le fruit d'une collaboration entre acteurs scientifiques, associatifs et citoyens. Sa force réside dans la diversité des parties prenantes impliquées dans chaque étape du programme.</p>
+      <div class="actors-grid">
+        <div class="actor-col">
+          <h4>Associations de plaisanciers</h4>
+          <ul>
+            <li>APMB</li>
+            <li>Passe Coque</li>
+            <li>RIEM</li>
+            <li>Dellec Plongée</li>
+          </ul>
+        </div>
+        <div class="actor-col">
+          <h4>Tiers lieux & FabLabs</h4>
+          <ul>
+            <li>Fabriques du Ponant</li>
+            <li>MakerLab</li>
+          </ul>
+        </div>
+        <div class="actor-col">
+          <h4>Instituts scientifiques</h4>
+          <ul>
+            <li>IFREMER</li>
+            <li>IMEV</li>
+            <li>LOCEAN</li>
+            <li>LOPS</li>
+            <li>AMURE · MIO</li>
+          </ul>
+        </div>
+        <div class="actor-col">
+          <h4>Soutiens financiers</h4>
+          <ul>
+            <li>Fondation de France</li>
+            <li>Fondation Crédit-Mutuel</li>
+            <li>IFREMER · ISblue</li>
+            <li>IUEM · Linktogether</li>
+            <li>Université de Paris</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-accent">
+    <div class="container contact-inner">
+      <h2>Rejoindre le programme</h2>
+      <p>Vous êtes chercheur, marin, maker, ou simplement passionné par l'océan ? LittObs est un programme ouvert à toutes les contributions. Contactez Astrolabe Expeditions pour participer.</p>
+      <a href="mailto:contact@astrolabe-expeditions.org" class="btn-primary btn-large">Prendre contact</a>
+      <div class="contact-note">Programme open-source · Toute réutilisation est encouragée</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <span class="logo-text footer-logo-text">LittObs</span>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 Astrolabe Expeditions · Programme LittObs</p>
+        <p>Instruments océanographiques open-source pour la recherche participative marine.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
