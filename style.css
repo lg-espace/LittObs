@@ -107,12 +107,20 @@ ul { list-style: none; }
   transition: background 0.2s !important;
 }
 .nav-cta:hover { background: var(--gold-light) !important; }
+
+/* Menu Burger */
 .burger {
   display: none; flex-direction: column; gap: 5px;
   background: none; border: none; cursor: pointer; padding: 4px;
   margin-left: auto;
+  z-index: 1000;
 }
 .burger span { display: block; width: 24px; height: 2px; background: #fff; transition: 0.3s; }
+
+/* Animation active de la croix burger */
+.burger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.active span:nth-child(2) { opacity: 0; }
+.burger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ——— HERO ——— */
 #hero {
@@ -265,10 +273,11 @@ ul { list-style: none; }
 
 /* ——— SECTIONS ——— */
 .section { padding: var(--section-pad); }
-.section-light { background: var(--white); }
+.section-light { background: var(--white); color: var(--text-dark); }
 .section-dark  { background: var(--navy); color: var(--white); }
-.section-mid   { background: var(--mid-bg); }
+.section-mid   { background: #e8ecf2; color: var(--navy); }
 .section-accent { background: var(--navy-mid); color: var(--white); }
+.section-navy   { background: var(--navy-light); color: var(--white); }
 
 .container {
   max-width: var(--max-w);
@@ -280,8 +289,6 @@ ul { list-style: none; }
   color: var(--gold);
   margin-bottom: 16px;
 }
-.section-dark .section-label { color: var(--gold); }
-.section-mid .section-label  { color: var(--gold); }
 
 h2 {
   font-family: var(--serif);
@@ -289,7 +296,9 @@ h2 {
   line-height: 1.1;
   margin-bottom: 56px;
 }
-.section-dark h2 { color: var(--white); }
+.section-dark h2, .section-navy h2 { color: var(--white); }
+.section-mid h2, .section-mid h4, .section-mid p, .section-mid li, .section-mid .section-label { color: var(--navy) !important; }
+.section-navy h2, .section-navy h4, .section-navy p, .section-navy li, .section-navy .section-label { color: var(--white) !important; }
 
 .section-intro {
   font-size: 1.05rem; line-height: 1.75;
@@ -329,7 +338,7 @@ h2 {
   transition: transform 0.25s;
 }
 .ctx-card:hover { transform: translateY(-3px); }
-.ctx-icon { font-size: 1.6rem; margin-bottom: 12px; }
+.ctx-icon, .ch-icon { font-family: var(--sans); font-size: 1.8rem; margin-bottom: 12px; color: var(--gold); }
 .ctx-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; }
 .ctx-card p  { font-size: 0.85rem; line-height: 1.6; color: var(--text-mid); }
 
@@ -444,12 +453,13 @@ h2 {
   grid-template-columns: 1fr 1.6fr;
   gap: 56px;
   align-items: start;
-  margin-bottom: 72px;
+  margin-bottom: 60px;
 }
 .tech-img-wrap img {
   border-radius: 8px;
   border: 1px solid rgba(0,0,0,0.1);
   box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  background: white; padding: 10px;
 }
 .tech-specs { display: flex; flex-direction: column; gap: 32px; }
 .spec-group h4 {
@@ -468,6 +478,129 @@ h2 {
 .spec-row span { font-size: 0.85rem; color: var(--text-mid); }
 .spec-row strong { font-size: 0.875rem; font-weight: 600; text-align: right; }
 
+/* ——— TOUTE NOUVELLE GALERIE MÉCANIQUE ET CAO ——— */
+.mechanical-design {
+  margin-top: 60px;
+  margin-bottom: 80px;
+}
+.mechanical-design h3 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  margin-bottom: 32px;
+  color: var(--navy);
+}
+.mechanical-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+/* Colonne gauche : 3 mech-cards empilées */
+.mech-col-left {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Colonne droite : prototype2 style innov-feature */
+.mech-proto-feature {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  min-height: 100%;
+}
+.mech-proto-feature img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.mech-proto-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 32px;
+  background: linear-gradient(to top, rgba(10,22,40,0.95) 0%, rgba(10,22,40,0.3) 80%, transparent 100%);
+  transform: translateY(8px);
+  transition: transform 0.3s;
+}
+.mech-proto-overlay h4 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--white);
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+.mech-proto-overlay p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.65);
+}
+.mech-proto-feature:hover img {
+  transform: scale(1.03);
+}
+.mech-proto-feature:hover .mech-proto-overlay {
+  transform: translateY(0);
+}
+/* Surcharge la règle .section-mid qui force tout en navy !important */
+.section-mid .mech-proto-overlay h4,
+.section-mid .mech-proto-overlay p {
+  color: var(--white) !important;
+}
+.mech-card {
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.mech-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+.mech-media-wrap {
+  width: 100%;
+  height: 300px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.mech-media-wrap img, .mech-media-wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Evite le recadrage pour les fichiers 3D sur fond blanc */
+.mech-media-wrap .contain-media {
+  object-fit: contain;
+  padding: 16px;
+  background: #fdfdfd;
+}
+.mech-info {
+  padding: 24px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mech-info h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.mech-info p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-mid) !important;
+}
+
 .challenges h3 {
   font-family: var(--serif); font-size: 1.6rem;
   margin-bottom: 32px;
@@ -485,7 +618,6 @@ h2 {
   transition: transform 0.25s, box-shadow 0.25s;
 }
 .challenge-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.1); }
-.ch-icon { font-size: 1.8rem; margin-bottom: 14px; }
 .challenge-card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; }
 .challenge-card p  { font-size: 0.82rem; line-height: 1.6; color: var(--text-mid); }
 
@@ -500,11 +632,10 @@ h2 {
   letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--gold); margin-bottom: 16px;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 2px solid var(--gold);
 }
 .actor-col li {
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.65);
   padding: 6px 0;
   border-bottom: 1px solid rgba(255,255,255,0.05);
 }
@@ -570,7 +701,7 @@ footer {
     background: var(--navy); padding: 40px 24px;
     gap: 24px; z-index: 99;
   }
-  .nav-links.open a { font-size: 1.1rem; }
+  .nav-links.open a { font-size: 1.1rem; color: #fff !important; }
   .burger { display: flex; }
   .compare-block { flex-direction: column; }
   .compare-arrow { transform: rotate(90deg); padding: 8px 0; }
@@ -579,124 +710,13 @@ footer {
   .actors-grid { grid-template-columns: 1fr 1fr; }
   .hero-stats { gap: 20px; flex-wrap: wrap; }
   .stat-sep { display: none; }
+  .mechanical-grid { grid-template-columns: 1fr; gap: 24px; }
+  .mech-proto-feature { min-height: 400px; }
+  .mech-media-wrap { height: 250px; }
 }
 @media (max-width: 480px) {
   .challenges-grid { grid-template-columns: 1fr; }
   .actors-grid { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; }
   .btn-primary, .btn-ghost { text-align: center; }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Les icônes ctx-icon et ch-icon utiliseront désormais les symboles monochromes fournis dans le HTML */
-.ctx-icon, .ch-icon {
-  font-family: var(--sans); /* Pour assurer le rendu correct des symboles Unicode */
-  font-size: 1.8rem;
-  margin-bottom: 12px;
-  color: var(--gold);
-}
-
-/* On s'assure que les images dans les nouvelles sections techniques respectent le style */
-.tech-img-wrap img {
-  background: white; /* Pour les schémas avec fond transparent si nécessaire */
-  padding: 10px;
-}
-
-
-
-
-
-
-
-
-/* ... (gardez vos variables au début) ... */
-
-/* ——— SECTIONS ——— */
-.section-light { 
-  background: var(--white); 
-  color: var(--text-dark); 
-}
-
-.section-dark { 
-  background: var(--navy); 
-  color: var(--white); 
-}
-
-/* MODIFICATION : On définit un fond bleu visible et du texte blanc pour la lisibilité */
-.section-mid { 
-  background: var(--navy-light); 
-  color: var(--white); 
-}
-
-/* On s'assure que les titres et textes dans les sections "mid" soient bien blancs */
-.section-mid h2, 
-.section-mid h4, 
-.section-mid p, 
-.section-mid li,
-.section-mid .section-label {
-  color: var(--white) !important;
-}
-
-.section-mid .section-label {
-  opacity: 0.8;
-}
-
-/* On ajuste les cartes à l'intérieur pour qu'elles restent lisibles sur le bleu */
-.section-mid .actor-col h4 {
-  border-bottom: 2px solid var(--gold);
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-}
-
-/* Le reste de votre code CSS (navigation, boutons, etc.) reste inchangé */
-
-
-
-
-
-
-/* --- SECTION TECHNIQUE (Le bleu très clair que vous aimiez) --- */
-.section-mid { 
-  background: #e8ecf2; /* Bleu très clair / Blanc cassé */
-  color: var(--navy); 
-}
-
-.section-mid h2, 
-.section-mid h4, 
-.section-mid p, 
-.section-mid li,
-.section-mid .section-label {
-  color: var(--navy) !important;
-}
-
-/* --- SECTION ACTEURS (Le bleu foncé pour la visibilité) --- */
-.section-navy { 
-  background: var(--navy-light); 
-  color: var(--white); 
-}
-
-.section-navy h2, 
-.section-navy h4, 
-.section-navy p, 
-.section-navy li,
-.section-navy .section-label {
-  color: var(--white) !important;
-}
-
-/* Optionnel : on ajuste les bordures des listes pour le bleu foncé */
-.section-navy .actor-col h4 {
-  border-bottom: 2px solid var(--gold);
 }
